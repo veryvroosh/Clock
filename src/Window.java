@@ -21,7 +21,6 @@ public class Window extends JFrame{
         ImageIcon bgImage = new ImageIcon("icon.png");
         this.setIconImage(bgImage.getImage());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
         this.setSize(350,210);
         this.getContentPane().setBackground(Color.black);
         this.setResizable(false);
@@ -46,6 +45,7 @@ public class Window extends JFrame{
         this.add(dayLabel);
         this.add(timeLabel);
         this.add(dateLabel);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         checkTime();
     }
