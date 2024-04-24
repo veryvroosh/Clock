@@ -15,16 +15,28 @@ public class Window extends JFrame{
     String time;
     String day;
     String date;
+    JCheckBox stayOnTop;
 
     Window() {
         this.setTitle("Clock");
         ImageIcon bgImage = new ImageIcon("icon.png");
         this.setIconImage(bgImage.getImage());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(350,210);
+        this.setSize(350,235);
         this.getContentPane().setBackground(Color.black);
         this.setResizable(false);
         this.setLayout(new FlowLayout());
+
+        stayOnTop = new JCheckBox();
+        stayOnTop.setText("Stay on Top");
+        stayOnTop.setFocusable(false);
+        stayOnTop.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
+        stayOnTop.setForeground(new Color(161, 224, 250));
+        stayOnTop.setOpaque(false);
+
+        stayOnTop.addActionListener(e -> {
+            this.setAlwaysOnTop(stayOnTop.isSelected());
+        });
 
         timeFormat = new SimpleDateFormat("hh:mm:ss a");
         dayFormat = new SimpleDateFormat("EEEE");
@@ -45,6 +57,7 @@ public class Window extends JFrame{
         this.add(dayLabel);
         this.add(timeLabel);
         this.add(dateLabel);
+        this.add(stayOnTop, BorderLayout.EAST);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         checkTime();
